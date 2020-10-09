@@ -24,11 +24,11 @@ with open(budget_data, newline = "") as csvfile:
     total_profit_loss += int(first_row[1])
     value = int(first_row[1])
     
-    #Going through dates in each row
+    
     for row in csvreader:
         dates.append(row[0])
         
-        # Calculate the change, then add it to list of changes
+        
         change = int(row[1])-value
         profits.append(change)
         value = int(row[1])
@@ -63,3 +63,14 @@ print(f"Total: ${str(total_profit_loss)}")
 print(f"Average Change: ${str(round(avg_change,2))}")
 print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})")
 print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
+
+# output to text
+with open('PyBank.txt', 'w') as text_file: 
+    print("Financial Analysis", file=text_file)
+    print("-------------------------", file=text_file)
+    print(f"Total Months: {str(total_months)}", file=text_file)
+    print(f"Total: ${str(total_profit_loss)}", file=text_file)
+    print(f"Average Change: ${str(round(avg_change,2))}", file=text_file)
+    print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})", file=text_file)
+    print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})", file=text_file)
+
